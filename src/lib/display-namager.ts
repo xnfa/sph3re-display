@@ -7,7 +7,9 @@ const adapters = [new Win32Adapter(getDriversBasePath())];
 
 function getDriversBasePath() {
   if (existsSync(path.resolve(__dirname, '../../../drivers'))) {
-    return path.resolve(__dirname, '../../../drivers');
+    return path
+      .resolve(__dirname, '../../../drivers')
+      .replace('app.asar', 'app.asar.unpacked');
   } else {
     /** dev mode */
     return path.resolve(__dirname, '../../drivers');
